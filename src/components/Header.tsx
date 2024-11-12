@@ -1,64 +1,164 @@
-// 共通ヘッダーコンポーネント
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Header = () => {
     return (
-        <header className="bg-white shadow-md p-4 flex flex-col items-center sm:flex-row sm:justify-between">
+        <header className="header">
             {/* Left: Logo */}
-            <div className="flex items-center">
-                <Link href="/" passHref>
-                    <Image
-                        src="/images/logo.png" // ロゴ画像のパス
-                        alt="JNFロゴ"
-                        width={100}
-                        height={50}
-                        className="cursor-pointer"
-                    />
-                </Link>
+            <div className="top-bar">
+                {/* Left: Logo */}
+                <div className="logo-container">
+                    <Link href="/" legacyBehavior>
+                        <a className="logo">
+                            <Image
+                                src="/images/logo.png" // ロゴ画像のパス
+                                alt="JNFロゴ"
+                                width={450}
+                                height={145}
+                            />
+                        </a>
+                    </Link>
+                </div>
+
+                {/* Right: SNS Links */}
+                <div className="sns-links">
+                    <SNSLink href="https://www.instagram.com/jnf_nawatobi/" src="/images/insta_logo.png" alt="Instagram" />
+                    <SNSLink href="https://www.facebook.com/jnfnawatobi/?ref=embed_page" src="/images/Fb_logo.png" alt="Facebook" />
+                    <SNSLink href="https://x.com/jnfnawatobi?lang=ja" src="/images/x_logo.png" alt="Twitter" />
+                    <SNSLink href="https://www.youtube.com/channel/UCSAe9V0hdlu9Tn4X9Mnzl-A" src="/images/yt_logo.png" alt="YouTube" />
+                </div>
             </div>
 
             {/* Middle: Menu */}
-            <nav className="mt-4 sm:mt-0">
-                <ul className="flex space-x-4">
-                    <MenuItem href="/about" label="JNF日本なわとび競技連盟とは" />
-                    <MenuItem href="/members" label="JNF会員" />
-                    <MenuItem href="/certification" label="JNFなわとび検定" />
-                    <MenuItem href="/method" label="検定会 検定方法" />
-                    <MenuItem href="/video" label="動画検定" />
-                    <MenuItem href="/judge" label="審判資格" />
-                    <MenuItem href="/clubs" label="クラブ紹介" />
-                    <MenuItem href="/contact" label="お問い合わせ" />
+            <nav className="menu-container">
+                <ul className="menu">
+                    <MenuItem href="/about" label="JNF About" />
+                    <MenuItem href="/members" label="JNF Members" />
+                    <MenuItem href="/certification" label="JNF Exam" />
+                    <MenuItem href="/method" label="How to Exam" />
+                    <MenuItem href="/video" label="Exam for videos" />
+                    <MenuItem href="/judge" label="Judge" />
+                    <MenuItem href="/clubs" label="Clubs" />
+                    <MenuItem href="/contact" label="Contact" />
                 </ul>
             </nav>
 
-            {/* Right: SNS Links */}
-            <div className="flex space-x-4 mt-4 sm:mt-0">
-                <SNSLink href="https://www.instagram.com" src="/images/instagram.png" alt="Instagram" />
-                <SNSLink href="https://www.facebook.com" src="/images/facebook.png" alt="Facebook" />
-                <SNSLink href="https://twitter.com" src="/images/twitter.png" alt="Twitter" />
-                <SNSLink href="https://www.youtube.com" src="/images/youtube.png" alt="YouTube" />
-            </div>
+            {/* スタイル */}
+            <style jsx>{`
+                .header {
+                    background-color: white;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    padding: 16px;
+                }
+
+                .top-bar {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .logo-container {
+                    flex-shrink: 0;
+                }
+
+                .logo {
+                    cursor: pointer;
+                }
+
+                .sns-links {
+                    display: flex;
+                    gap: 16px;
+                }
+
+                .menu-container {
+                    margin-top: 16px;
+                }
+
+                .menu {
+                    display: flex;
+                    justify-content: space-between;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                .menu-link {
+                    text-decoration: none;
+                    color: black;
+                    font-size: 16px;
+                    position: relative;
+                    cursor: pointer;
+                    transition: color 0.3s ease;
+                }
+
+                .menu-link:hover {
+                    color: #ff69b4; /* Light pink */
+                }
+
+                .menu-link::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: -2px;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #ff69b4;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    transition: transform 0.3s ease;
+                }
+
+                .menu-link:hover::after {
+                    transform: scaleX(1);
+                }
+            `}</style>
         </header>
     );
 };
 
-// Menu item component with hover effect
 const MenuItem = ({ href, label }: { href: string; label: string }) => (
     <li>
-        <Link href={href} passHref>
-            <span className="relative cursor-pointer hover:text-pink-500">
-                {label}
-                <span className="absolute left-0 bottom-0 w-full h-0.5 bg-pink-500 scale-x-0 hover:scale-x-100 transition-transform origin-left"></span>
-            </span>
+        <Link href={href}>
+            <span className="menu-link">{label}</span>
         </Link>
+
+        <style jsx>{`
+            .menu-link {
+                text-decoration: none;
+                color: black;
+                font-size: 16px;
+                position: relative;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
+
+            .menu-link:hover {
+                color: #ff69b4; /* Light pink */
+            }
+
+            .menu-link::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                width: 100%;
+                height: 2px;
+                background-color: #ff69b4;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform 0.3s ease;
+            }
+
+            .menu-link:hover::after {
+                transform: scaleX(1);
+            }
+        `}</style>
     </li>
 );
 
-// SNS Link component
 const SNSLink = ({ href, src, alt }: { href: string; src: string; alt: string }) => (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
+    <a href={href} target="_blank" rel="noopener noreferrer">
         <Image src={src} alt={alt} width={24} height={24} />
     </a>
 );
