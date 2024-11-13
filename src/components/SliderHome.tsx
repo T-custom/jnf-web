@@ -15,14 +15,14 @@ const SliderHome = () => {
         '/images/hyogo1.jpg',
         '/images/hyogo2.jpg',
         '/images/hyogo3.jpg',
-        '/images/hyogo4.jpg',
+        '/images/hyogo5.jpg',
     ];
 
     return (
         <div className="slider-container">
             <Swiper
                 modules={[Navigation, Pagination, Autoplay, EffectFade]}
-                slidesPerView={1}
+                slidesPerView={2.5}
                 speed={2000}
                 navigation
                 pagination={{ clickable: true }}
@@ -50,9 +50,9 @@ const SliderHome = () => {
 
             <style jsx>{`
                 .slider-container {
+                    margin-top: 10px;
                     width: 100%;
                     height: 450px; /* 固定高さ */
-                    margin: 0 auto;
                     position: relative;
                     overflow: hidden;
                     background-color: #f3f4f6; /* 背景色を追加 */

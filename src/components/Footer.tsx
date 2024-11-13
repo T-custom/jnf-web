@@ -30,7 +30,7 @@ const Footer = () => {
             <nav className="footer-menu">
                 <ul>
                     <FooterMenuItem href="/about" label="JNFなわとび競技連盟とは" />
-                    <FooterMenuItem href="/members" label="JNF会員" />
+                    <FooterMenuItem href="/member" label="JNF会員" />
                     <FooterMenuItem href="/certification" label="JNFなわとび検定" />
                     <FooterMenuItem href="/method" label="公認検定・団" />
                     <FooterMenuItem href="/video" label="検定会・検定方法" />

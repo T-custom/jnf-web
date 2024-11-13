@@ -3,8 +3,9 @@ import React from 'react';
 const UnderDevelopment = () => {
     return (
         <div className="development-container">
-            <h2>開発中です。 内容の連絡は大澤図南まで</h2>
+            <h2>開発中です。 内容等、要望あれば大澤図南までお願いします。</h2>
             <p>開発中です。ここにはFacebook, Instagram, X の最新情報を掲載予定です。</p>
+            <p>また告知等、最新情報の記載を予定しています。</p>
             <style jsx>{`
                 .development-container {
                     padding: 20px;
