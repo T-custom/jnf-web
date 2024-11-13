@@ -1,12 +1,9 @@
-// /components/SliderHome.tsx
-
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import 'swiper/css/effect-fade';
 import Image from 'next/image';
 
@@ -24,18 +21,12 @@ const SliderHome = () => {
     return (
         <div className="slider-container">
             <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade]} 
+                modules={[Navigation, Pagination, Autoplay, EffectFade]}
                 slidesPerView={1}
-                effect="fade"
                 speed={2000}
                 navigation
                 pagination={{ clickable: true }}
-                autoplay={{ delay: 5000, disableOnInteraction: false }} 
-                onAutoplayTimeLeft={(swiper, time, progress) => {
-                    if (progressRef.current) {
-                        progressRef.current.style.transform = `scaleX(${progress})`;
-                    }
-                }}
+                autoplay={{ delay: 2000, disableOnInteraction: false }}
             >
                 {images.map((src, index) => (
                     <SwiperSlide key={index} className="slide">
@@ -43,23 +34,30 @@ const SliderHome = () => {
                             <Image
                                 src={src}
                                 alt={`Slide ${index + 1}`}
-                                width={800}
-                                height={480}
+                                width={800} // 固定幅を指定
+                                height={450} // 固定高さを指定
                                 className="image"
+                                style={{ objectFit: 'contain' }}
                             />
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
 
+            <div className="progress-bar-background">
+                <div className="progress-bar-fill" ref={progressRef}></div>
+            </div>
+
             <style jsx>{`
                 .slider-container {
                     width: 100%;
-                    height: 50vh;
+                    height: 450px; /* 固定高さ */
+                    margin: 0 auto;
                     position: relative;
                     overflow: hidden;
+                    background-color: #f3f4f6; /* 背景色を追加 */
                 }
-                
+
                 .slide {
                     display: flex;
                     align-items: center;
@@ -68,26 +66,21 @@ const SliderHome = () => {
                 }
 
                 .image-container {
-                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     width: 100%;
                     height: 100%;
-                    text-align: center;
                 }
 
-                .progress-bar-background {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 4px;
-                    background-color: #d1d5db; /* グレー背景色 */
+                .image {
+                    object-fit: cover; /* 枠内に画像全体をフィットさせる */
                 }
 
-                .progress-bar-fill {
-                    height: 100%;
-                    background-color: #3b82f6; /* プログレスバーの青色 */
-                    transform-origin: left;
-                    transition: transform 3s linear;
+                @media (max-width: 768px) {
+                    .slider-container {
+                        height: 300px; /* モバイルでの高さ調整 */
+                    }
                 }
             `}</style>
         </div>
