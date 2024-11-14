@@ -52,8 +52,8 @@ const Header = () => {
                     <MenuItem href="/about" label="JNF日本なわとび競技連盟とは" />
                     <MenuItem href="/member" label="JNF会員" />
                     <MenuItem href="/certification" label="JNFなわとび検定" />
-                    <MenuItem href="/method" label="公認検定・段" />
-                    <MenuItem href="/video" label="検定会・検定方法" />
+                    {/* <MenuItem href="/method" label="公認検定・段" /> */}
+                    <MenuItem href="/exam" label="検定会・検定方法" />
                     <MenuItem href="/judge" label="審判資格" />
                     <MenuItem href="/clubs" label="クラブ紹介" />
                     <MenuItem href="/contact" label="お問い合わせ" />
