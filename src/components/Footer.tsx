@@ -56,9 +56,11 @@ const Footer = () => {
 
                 .top-bar {
                     display: flex;
-                    justify-content: space-between;
+                    flex-wrap: wrap; /* 折り返しを有効にする */
+                    justify-content: center; /* 中央揃え */
                     align-items: center;
-                    margin: 0 120px 0 120px;
+                    gap: 15px; /* 要素間のスペース */
+                    margin: 0 20px;
                 }
 
                 .logo-container {
@@ -99,6 +101,17 @@ const Footer = () => {
                     font-size: 12px;
                     color: #666;
                     margin-top: 10px;
+                }
+
+                @media (max-width: 768px) {
+                    .top-bar {
+                        flex-direction: column; /* 縦並びにする */
+                        text-align: center;
+                    }
+
+                    .sns-links {
+                        justify-content: center; /* 中央揃え */
+                    }
                 }
             `}</style>
         </footer>

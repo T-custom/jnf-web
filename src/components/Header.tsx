@@ -33,7 +33,7 @@ const Header = () => {
                     </div>
 
                     <div className="sns-links">
-                        <SNSLink href="https://www.instagram.com/jnf_nawatobi/" src="/images/insta_logo.png" alt="Instagram" />
+                        <SNSLink href="https://www.instagram.com/jnf_nawatobi/" src="/images/Insta_logo.png" alt="Instagram" />
                         <SNSLink href="https://www.facebook.com/jnfnawatobi/?ref=embed_page" src="/images/Fb_logo.png" alt="Facebook" />
                         <SNSLink href="https://x.com/jnfnawatobi?lang=ja" src="/images/x_logo.png" alt="Twitter" />
                         <SNSLink href="https://www.youtube.com/channel/UCSAe9V0hdlu9Tn4X9Mnzl-A" src="/images/yt_logo.png" alt="YouTube" />

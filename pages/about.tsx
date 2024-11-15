@@ -141,6 +141,30 @@ const About = () => {
                     margin-bottom: 10px;
                     font-size: 1rem;
                 }
+                
+                @media (max-width: 768px) {
+                    .about-container {
+                        padding: 10px;
+                    }
+
+                    h1 {
+                        font-size: 1.5rem;
+                    }
+
+                    h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    .corporate-overview th,
+                    .corporate-overview td {
+                        padding: 8px;
+                        font-size: 0.9rem;
+                    }
+
+                    li {
+                        font-size: 0.9rem;
+                    }
+                }
             `}</style>
         </>
     );
