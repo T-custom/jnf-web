@@ -193,6 +193,7 @@ const MenuItem = ({ href, label }: { href: string; label: string }) => {
 
                 .menu-link {
                     background: none;
+                    font-weight: bold;
                     border: none;
                     padding: 0;
                     font-size: 15px;
