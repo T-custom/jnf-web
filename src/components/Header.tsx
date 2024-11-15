@@ -28,22 +28,29 @@ const Header = () => {
                                 alt="JNFロゴ"
                                 width={410}
                                 height={77}
+                                style={{
+                                    maxWidth: '100%',
+                                    height: 'auto',
+                                }}
                             />
                         </Link>
                     </div>
 
-                    <div className="sns-links">
-                        <SNSLink href="https://www.instagram.com/jnf_nawatobi/" src="/images/Insta_logo.png" alt="Instagram" />
-                        <SNSLink href="https://www.facebook.com/jnfnawatobi/?ref=embed_page" src="/images/Fb_logo.png" alt="Facebook" />
-                        <SNSLink href="https://x.com/jnfnawatobi?lang=ja" src="/images/x_logo.png" alt="Twitter" />
-                        <SNSLink href="https://www.youtube.com/channel/UCSAe9V0hdlu9Tn4X9Mnzl-A" src="/images/yt_logo.png" alt="YouTube" />
+                    <div className="sns-and-menu">
+                        <div className="sns-links">
+                            <SNSLink href="https://www.instagram.com/jnf_nawatobi/" src="/images/Insta_logo.png" alt="Instagram" />
+                            <SNSLink href="https://www.facebook.com/jnfnawatobi/?ref=embed_page" src="/images/Fb_logo.png" alt="Facebook" />
+                            <SNSLink href="https://x.com/jnfnawatobi?lang=ja" src="/images/x_logo.png" alt="Twitter" />
+                            <SNSLink href="https://www.youtube.com/channel/UCSAe9V0hdlu9Tn4X9Mnzl-A" src="/images/yt_logo.png" alt="YouTube" />
+                        </div>
+                        <div className="burger-wrapper" onClick={toggleMenu}>
+                            <div className={`hamburger ${isMenuOpen ? "open" : ""}`}>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
                     </div>
-
-                    <button className="hamburger-menu" onClick={toggleMenu}>
-                        <span className="bar"></span>
-                        <span className="bar"></span>
-                        <span className="bar"></span>
-                    </button>
                 </div>
             </header>
 
@@ -61,107 +68,136 @@ const Header = () => {
             </nav>
 
             <style jsx>{`
-                .header {
-                    background-color: white;
-                }
+    .header {
+        background-color: white;
+    }
 
-                .top-bar {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 16px 120px;
-                }
+    .top-bar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 20px;
+    }
 
-                .logo-container {
-                    flex-shrink: 0;
-                }
+    .logo-container {
+        flex: 1;
+        text-align: left;
+    }
 
-                .sns-links {
-                    display: flex;
-                    gap: 25px;
-                }
+    .sns-and-menu {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
 
-                .hamburger-menu {
-                    display: none;
-                    flex-direction: column;
-                    gap: 6px;
-                    cursor: pointer;
-                    padding: 8px;
-                    border: 2px solid #e0e0e0;
-                    border-radius: 50%; /* 丸い枠 */
-                    transition: background-color 0.3s ease, transform 0.3s ease;
-                    margin: 10px;
-                }
+    .sns-links {
+        display: flex;
+        gap: 20px;
+    }
 
-                .hamburger-menu:hover {
-                    background-color: #f9f9f9;
-                    transform: scale(1.1); /* ホバー時に少し拡大 */
-                }
+    .burger-wrapper {
+        display: none; /* 通常時は非表示 */
+    }
 
-                .hamburger-menu .bar {
-                    width: 24px;
-                    height: 3px;
-                    background-color: #555;
-                    border-radius: 3px; /* 丸みを加える */
-                    transition: all 0.3s ease;
-                }
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 35px; /* 幅を広げる */
+        height: 30px; /* 高さを広げる */
+        cursor: pointer;
+        position: relative;
+    }
 
-                .hamburger-menu:hover .bar {
-                    background-color: #0070f3; /* ホバー時に色を青に */
-                }
+    .hamburger span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: black; /* 黒線 */
+        border-radius: 3px;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
-                .menu-container {
-                    padding: 0 120px;
-                    background-color: white;
-                    z-index: 10;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-                    transition: all 0.3s ease;
-                }
+    .hamburger.open span:nth-child(1) {
+        transform: translateY(12.7px) rotate(45deg); /* 上の線を傾ける */
+    }
 
-                .menu-container.sticky {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
-                }
+    .hamburger.open span:nth-child(2) {
+        opacity: 0; /* 真ん中の線を透明に */
+    }
 
-                .menu-container.open {
-                    display: flex;
-                }
+    .hamburger.open span:nth-child(3) {
+        transform: translateY(-12.7px) rotate(-45deg); /* 下の線を傾ける */
+    }
 
-                .menu {
-                    display: flex;
-                    justify-content: space-between;
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                }
+    .menu-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+        background-color: white;
+        z-index: 10;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
 
-                @media (max-width: 768px) {
-                    .sns-links {
-                        display: none;
-                    }
+    .menu-container.sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
 
-                    .hamburger-menu {
-                        display: flex;
-                    }
+    .menu {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-                    .menu-container {
-                        display: none;
-                        flex-direction: column;
-                    }
+    @media (max-width: 768px) {
+        .burger-wrapper {
+            display: flex; /* レスポンシブ時のみ表示 */
+            align-items: center;
+        }
 
-                    .menu-container.open {
-                        display: flex;
-                    }
+        .sns-links img {
+            width: 30px; /* SNSアイコンを広げる */
+            height: 30px;
+        }
 
-                    .menu {
-                        flex-direction: column;
-                        gap: 10px;
-                    }
-                }
-            `}</style>
+        .top-bar {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+        }
+
+        .sns-and-menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* SNSとハンバーガーアイコンの間隔を広げる */
+        }
+
+        .menu-container {
+            display: none;
+            flex-direction: column;
+        }
+
+        .menu-container.open {
+            display: flex;
+        }
+
+        .menu {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+`}</style>
         </>
     );
 };

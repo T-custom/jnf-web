@@ -12,8 +12,10 @@ const Footer = () => {
                         <Image
                             src="/images/logo.png"
                             alt="JNFロゴ"
-                            width={350} // サイズを小さく
+                            layout="responsive"
+                            width={350}
                             height={67}
+                            sizes="(max-width: 768px) 50vw, 200px"
                         />
                     </Link>
                 </div>
