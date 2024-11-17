@@ -14,27 +14,27 @@ type Article = {
 const articles: Article[] = [
     {
         id: 1,
-        title: '最新の記事タイトル1',
-        description: 'この記事は最新のトピックについて紹介しています。',
-        imageUrl: '/images/article1.jpg',
-        link: '/articles/1',
-        date: '2024-11-14',
+        title: '全日本大会のお知らせ',
+        description: '【JNF全日本なわとび選手権大会in岡山】の開催が決まりました。...',
+        imageUrl: '/images/alljapan_2024.jpeg',
+        link: '/',
+        date: '2024-11-17',
     },
     {
         id: 2,
-        title: '最新の記事タイトル2',
-        description: 'この記事では、技術革新に関するニュースを取り上げています。',
-        imageUrl: '/images/article2.jpg',
+        title: '芦屋市でなわとび講習会/検定会を実施しました。',
+        description: '10月20日（日）　「なわとび検定」を行いました！！...',
+        imageUrl: '/images/hyogo_seminar_20241030.jpg',
         link: '/articles/2',
-        date: '2024-11-13',
+        date: '2024-10-21',
     },
     {
         id: 3,
-        title: '最新の記事タイトル3',
-        description: 'この記事では、イベント情報について詳しく解説します。',
-        imageUrl: '/images/article3.jpg',
+        title: '総社市で講習会を行いました。',
+        description: '岡山の総社市で縄跳び講習会をおこないました。...',
+        imageUrl: '/images/kibiji_202403.jpeg',
         link: '/articles/3',
-        date: '2024-11-12',
+        date: '2024-03-30',
     },
 ];
 
@@ -50,8 +50,7 @@ const Topick = () => {
                                 <Image
                                     src={article.imageUrl}
                                     alt={article.title}
-                                    width={300}
-                                    height={200}
+                                    layout='fill'
                                     objectFit="cover"
                                 />
                             </div>

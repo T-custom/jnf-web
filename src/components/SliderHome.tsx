@@ -22,7 +22,7 @@ const SliderHome = () => {
         <div className="slider-container">
             <Swiper
                 modules={[Navigation, Pagination, Autoplay, EffectFade]}
-                slidesPerView={2.5}
+                slidesPerView={1}
                 speed={2000}
                 navigation
                 pagination={{ clickable: true }}
