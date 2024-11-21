@@ -22,7 +22,7 @@ const articles: Article[] = [
     },
     {
         id: 2,
-        title: '芦屋市でなわとび講習会/検定会を実施しました。',
+        title: '芦屋市でなわとび講習会/検定会を行いました。',
         description: '10月20日（日）　「なわとび検定」を行いました！！...',
         imageUrl: '/images/hyogo_seminar_20241030.jpg',
         link: '/articles/2',

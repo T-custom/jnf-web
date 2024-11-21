@@ -1,85 +1,170 @@
-import React, { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 const SliderHome = () => {
-    const progressRef = useRef<HTMLDivElement>(null);
-
-    // 画像リストの例
     const images = [
+        '/images/alljapan_2024.jpeg',
         '/images/hyogo1.jpg',
         '/images/hyogo2.jpg',
         '/images/hyogo3.jpg',
         '/images/hyogo5.jpg',
     ];
 
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    // 自動再生の間隔（ミリ秒）
+    const autoPlayInterval = 5000;
+
+    // 次の画像に切り替える
+    const goToNextSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    // 前の画像に戻る
+    const goToPrevSlide = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    };
+
+    // 自動再生のためのuseEffect
+    useEffect(() => {
+        const timer = setInterval(goToNextSlide, autoPlayInterval);
+        return () => clearInterval(timer); // クリーンアップ
+    }, []);
+
     return (
-        <div className="slider-container">
-            <Swiper
-                modules={[Navigation, Pagination, Autoplay, EffectFade]}
-                slidesPerView={1}
-                speed={2000}
-                navigation
-                pagination={{ clickable: true }}
-                autoplay={{ delay: 2000, disableOnInteraction: false }}
-            >
-                {images.map((src, index) => (
-                    <SwiperSlide key={index} className="slide">
-                        <div className="image-container">
+        <div>
+            <div className="slider-container">
+                <div className="image-container">
+                    {images.map((src, index) => (
+                        <div
+                            key={index}
+                            className={`slide ${index === currentIndex ? 'active' : ''}`}
+                            style={{
+                                opacity: index === currentIndex ? 1 : 0,
+                                zIndex: index === currentIndex ? 1 : 0,
+                            }}
+                        >
                             <Image
                                 src={src}
                                 alt={`Slide ${index + 1}`}
-                                width={800} // 固定幅を指定
-                                height={450} // 固定高さを指定
+                                fill
                                 className="image"
-                                style={{ objectFit: 'contain' }}
+                                style={{ objectFit: 'cover' }}
                             />
                         </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
+                    ))}
+                </div>
 
-            <div className="progress-bar-background">
-                <div className="progress-bar-fill" ref={progressRef}></div>
+                {/* Navigation buttons */}
+                <button className="prev-button" onClick={goToPrevSlide}>
+                    ‹
+                </button>
+                <button className="next-button" onClick={goToNextSlide}>
+                    ›
+                </button>
+            </div>
+
+            {/* Pagination */}
+            <div className="pagination">
+                {images.map((_, index) => (
+                    <span
+                        key={index}
+                        className={`dot ${index === currentIndex ? 'active' : ''}`}
+                        onClick={() => setCurrentIndex(index)}
+                    ></span>
+                ))}
             </div>
 
             <style jsx>{`
                 .slider-container {
-                    margin-top: 10px;
-                    width: 100%;
-                    height: 450px; /* 固定高さ */
                     position: relative;
+                    width: 100%;
+                    height: 450px;
                     overflow: hidden;
-                    background-color: #f3f4f6; /* 背景色を追加 */
-                }
-
-                .slide {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    height: 100%;
+                    background-color: #f3f4f6;
                 }
 
                 .image-container {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                    position: relative;
                     width: 100%;
                     height: 100%;
                 }
 
+                .slide {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    transition: opacity 0.8s ease-in-out;
+                }
+
+                .slide.active {
+                    opacity: 1;
+                }
+
                 .image {
-                    object-fit: cover; /* 枠内に画像全体をフィットさせる */
+                    object-fit: cover;
+                }
+
+                .prev-button,
+                .next-button {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: #87cefe;
+                    color: white;
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 2rem;
+                    padding: 1rem;
+                    cursor: pointer;
+                    z-index: 10;
+                }
+
+                .prev-button {
+                    left: 20px;
+                }
+
+                .next-button {
+                    right: 20px;
+                }
+
+                .pagination {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 10px;
+                    gap: 10px;
+                }
+
+                .dot {
+                    width: 12px;
+                    height: 12px;
+                    background-color: #dcdcdc;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    transition: background-color 0.3s;
+                }
+
+                .dot.active {
+                    background-color: #87cefe;
                 }
 
                 @media (max-width: 768px) {
                     .slider-container {
-                        height: 300px; /* モバイルでの高さ調整 */
+                        height: 300px;
+                    }
+
+                    .prev-button,
+                    .next-button {
+                        font-size: 1.5rem;
+                    }
+
+                    .dot {
+                        width: 10px;
+                        height: 10px;
                     }
                 }
             `}</style>
