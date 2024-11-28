@@ -16,7 +16,6 @@ const AboutJnf: React.FC = () => {
             alt="JNF Logo" 
             className="image" 
             />
-            <p className="mainTitle">JAPAN NAWATOBI FEDERATION</p>
             <p className="subTitle">日本なわとび競技連盟について</p>
             <p className="description">
             日本なわとび競技連盟（JNF）は、なわとびを技術や演技を競うスポーツとして体系化し、
@@ -33,30 +32,28 @@ const AboutJnf: React.FC = () => {
 
         <style jsx>{`
             .container {
-            background: linear-gradient(to bottom, #f9f9f9 20%, #013b81 20%);
-            color: #FFFFFF;
-            text-align: center;
-            padding: 50px 20px;
-            min-height: 100vh;
-            box-sizing: border-box;
+                background: linear-gradient(to bottom, #f9f9f9 20%, #013b81 20%);
+                color: #FFFFFF;
+                text-align: center;
+                padding: 50px 20px;
+                min-height: 100vh;
+                box-sizing: border-box;
             }
+
             .image {
-            max-width: 100%;
-            height: auto;
+                max-width: 100%;
+                height: auto;
             }
-            .mainTitle {
-            font-size: 36px;
-            margin-bottom: 20px;
-            }
+
             .subTitle {
-            font-size: 23px;
-            margin-bottom: 20px;
+                font-size: 30px;
+                margin-bottom: 30px;
             }
             .description {
-            font-size: 15px;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
+                font-size: 15px;
+                line-height: 1.6;
+                max-width: 800px;
+                margin: 0 auto;
             }
 
             .view-more {
