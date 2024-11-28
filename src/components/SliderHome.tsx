@@ -57,10 +57,10 @@ const SliderHome = () => {
 
                 {/* Navigation buttons */}
                 <button className="prev-button" onClick={goToPrevSlide}>
-                    ‹
+                ＜
                 </button>
                 <button className="next-button" onClick={goToNextSlide}>
-                    ›
+                ＞
                 </button>
             </div>
 
@@ -116,11 +116,14 @@ const SliderHome = () => {
                     background-color: #87cefe;
                     color: white;
                     border: none;
-                    border-radius: 10px;
-                    font-size: 2rem;
-                    padding: 1rem;
+                    border-radius: 50%;
+                    width: 50px;
+                    height: 50px;
+                    font-size: 1rem;
+                    font-weight: bold;
                     cursor: pointer;
                     z-index: 10;
+                    transition: background-color 0.3s ease;
                 }
 
                 .prev-button {
@@ -129,6 +132,12 @@ const SliderHome = () => {
 
                 .next-button {
                     right: 20px;
+                }
+                    
+                .prev-button:hover,
+                .next-button:hover {
+                    background-color: white;
+                    color: skyblue;
                 }
 
                 .pagination {

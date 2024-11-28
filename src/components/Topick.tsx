@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 
 type Article = {
@@ -39,29 +39,42 @@ const articles: Article[] = [
 ];
 
 const Topick = () => {
+    const router = useRouter();
+
+    const handleNavigation = (path: string) => {
+        router.push(path);
+    };
+
     return (
         <section className="topick-section">
-            <h2 className="topick-title">最新の記事</h2>
+            <h2 className="topick-title">お知らせ</h2>
             <div className="articles-container">
                 {articles.map((article) => (
-                    <Link href={article.link} key={article.id}>
-                        <div className="article-card">
-                            <div className="article-image">
-                                <Image
-                                    src={article.imageUrl}
-                                    alt={article.title}
-                                    layout='fill'
-                                    objectFit="cover"
-                                />
-                            </div>
-                            <div className="article-content">
-                                <h3 className="article-title">{article.title}</h3>
-                                <p className="article-description">{article.description}</p>
-                                <span className="article-date">{article.date}</span>
-                            </div>
+                    <div
+                        className="article-card"
+                        key={article.id}
+                        onClick={() => handleNavigation(article.link)}
+                    >
+                        <div className="article-image">
+                            <Image
+                                src={article.imageUrl}
+                                alt={article.title}
+                                layout="fill"
+                                objectFit="cover"
+                            />
                         </div>
-                    </Link>
+                        <div className="article-content">
+                            <h3 className="article-title">{article.title}</h3>
+                            <p className="article-description">{article.description}</p>
+                            <span className="article-date">{article.date}</span>
+                        </div>
+                    </div>
                 ))}
+            </div>
+            {/* VIEW MORE Button */}
+            <div className="view-more" onClick={() => handleNavigation('/articles')}>
+                <span>記事一覧</span>
+                <button className="arrow-button">➔</button>
             </div>
 
             <style jsx>{`
@@ -75,6 +88,7 @@ const Topick = () => {
                     font-weight: bold;
                     margin-bottom: 20px;
                     text-align: center;
+                    color: #333333;
                 }
 
                 .articles-container {
@@ -113,6 +127,7 @@ const Topick = () => {
                     font-size: 18px;
                     font-weight: bold;
                     margin: 0 0 10px;
+                    color: #333333;
                 }
 
                 .article-description {
@@ -124,6 +139,45 @@ const Topick = () => {
                 .article-date {
                     font-size: 12px;
                     color: #888;
+                }
+
+                .view-more {
+                    display: flex;
+                    justify-content: right;
+                    align-items: center;
+                    gap: 20px;
+                    margin-top: 20px;
+                    margin-right: 200px;
+                    cursor: pointer;
+                    text-decoration: none;
+                    color: #000;
+                }
+
+                .view-more span {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #333333;
+                }
+
+                .arrow-button {
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 50px;
+                    height: 50px;
+                    color: white;
+                    background-color: #87cefa;
+                    border: none;
+                    border-radius: 50%;
+                    font-size: 20px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+
+                .arrow-button:hover {
+                    background-color: white;
+                    color: skyblue;
                 }
             `}</style>
         </section>
