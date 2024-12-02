@@ -8,7 +8,6 @@ const clubs = [
         branch: '第2支部　千葉県船橋市',
         foundation: '',
         members: '',
-        instagram: 'https://www.instagram.com/kenshin_nc', // Instagram URL
     },
     {
         name: '兵庫 N.C',
@@ -17,21 +16,21 @@ const clubs = [
         members: '600',
         location: '芦屋市立体育館　青少年センター',
         schedule: '木曜日　18:00~',
-        instagram: 'https://www.instagram.com/hyogo_nc',
+        instagram: 'https://www.instagram.com/jnf_hyogo',
     },
     {
         name: '朝日 N.C',
         branch: '第16支部　長野県東筑摩郡朝日村',
         foundation: '',
         members: '',
-        instagram: 'https://www.instagram.com/asahi_nc',
+        instagram: 'https://www.instagram.com/jnf_asahi',
     },
     {
         name: '吉備路 N.C',
         branch: '第21支部　岡山県岡山市',
         foundation: '',
         members: '',
-        instagram: 'https://www.instagram.com/kibiji_nc',
+        instagram: 'https://www.instagram.com/jnf_kibiji',
     },
     {
         name: '新潟 N.C',
@@ -39,15 +38,13 @@ const clubs = [
         foundation: '2001年11月24日',
         members: '17名',
         location: '小木B&G海洋センター2F',
-        schedule: '日曜日　14:30~16:00',
-        instagram: 'https://www.instagram.com/niigata_nc',
+        schedule: '日曜日　14:30~16:00'
     },
     {
         name: '浜名湖 N.C',
         branch: '第28支部　静岡県湖西市',
         foundation: '',
         members: '',
-        instagram: 'https://www.instagram.com/hamanako_nc',
     },
 ];
 

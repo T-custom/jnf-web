@@ -6,6 +6,7 @@ import Topick from '../src/components/Topick'
 import Footer from '../src/components/Footer'
 import AboutJnf from '@/src/components/AboutJnf';
 import SocialMediaEmbeds from '@/src/components/ClubSns';
+import ExamAbout from '@/src/components/ExamAbout';
 
 const HomePage = () => {
     return (
@@ -14,6 +15,7 @@ const HomePage = () => {
             <SliderHome />
             <Topick />
             <AboutJnf />
+            <ExamAbout />
             <SocialMediaEmbeds />
             <Footer />
         </div>

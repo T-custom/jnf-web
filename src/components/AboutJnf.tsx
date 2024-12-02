@@ -47,7 +47,7 @@ const AboutJnf: React.FC = () => {
 
             .subTitle {
                 font-size: 30px;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
             .description {
                 font-size: 15px;

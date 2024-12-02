@@ -6,7 +6,6 @@ const About = () => {
     const corporateInfo = [
         { label: '所轄庁', value: '兵庫県' },
         { label: '法人名称', value: '特定非営利活動法人ＪＮＦ日本なわとび競技連盟' },
-        { label: '主たる事務所の所在地', value: '兵庫県芦屋市伊勢町１０番２１－１号　亀岡方' },
         { label: '代表者氏名', value: '齋藤　大樹' },
         { label: '設立認証年月日', value: '2018年02月23日' },
         { label: '定款に記載された目的', value: 'この法人は、世界に古くから伝承された運動文化財であるなわとび運動を、スポーツとして発展させ、青少年の健全育成に寄与することを目的とする。' },
@@ -33,6 +32,13 @@ const About = () => {
                     なわとびは誰もが遊びや運動として、学校や家であやとびや交差とび、二重とびなどに挑戦したり、長くとび続けたりして楽しんだ経験があると思います。
                     そのような、なわとびの様々な技を点数化しルールを作って競技として楽しむことができるようにしているのが、JNFのなわとびです。
                 </p>
+                <section className="hero">
+                    <img
+                        src="/images/hyogo6.png"
+                        alt="お問い合わせ"
+                        className="hero-image"
+                    />
+                </section>
                 <section className="corporate-overview">
                     <h2>法人概要</h2>
                     <table>
@@ -83,6 +89,12 @@ const About = () => {
                     color: #2c3e50;
                     text-align: center;
                     margin-bottom: 30px;
+                }
+
+                .hero-image {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 8px;
                 }
 
                 .intro {

@@ -11,7 +11,7 @@ const Contact = () => {
                 <h1>問い合わせ先</h1>
                 <section className="hero">
                     <img
-                        src="/images/panel.jpg" // 適切な画像パスを設定してください
+                        src="/images/panel.jpg"
                         alt="お問い合わせ"
                         className="hero-image"
                     />

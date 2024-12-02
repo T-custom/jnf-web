@@ -1,6 +1,37 @@
 import React from 'react';
+import { useEffect } from 'react';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
+
+const InstagramEmbed = ({ permalink }: { permalink: string }) => {
+    useEffect(() => {
+      if (typeof window !== 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://www.instagram.com/embed.js';
+        script.async = true;
+        document.body.appendChild(script);
+      }
+    }, []);
+  
+    return (
+      <blockquote
+        className="instagram-media"
+        data-instgrm-permalink={permalink}
+        data-instgrm-version="14"
+        style={{
+          background: '#FFF',
+          border: '0',
+          borderRadius: '3px',
+          boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)',
+          margin: '1px',
+          maxWidth: '270px',
+          minWidth: '163px',
+          padding: '0',
+          width: '100%',
+        }}
+      ></blockquote>
+    );
+};
 
 const Certificate = () => {
     return (
@@ -64,6 +95,12 @@ const Certificate = () => {
                     </p>
                 </section>
 
+                40級〜1級までの全ての技は、Instagramで見本動画を掲載しています。
+                <section className='modelVideo'>
+                        <InstagramEmbed permalink="https://www.instagram.com/p/B_wwIeAH4R1/" />
+                        <InstagramEmbed permalink="https://www.instagram.com/p/CASKvthn-8O/" />
+                </section>
+
                 <section className="recognition">
                     <h3>(2) 認定について</h3>
                     <p>
@@ -102,6 +139,12 @@ const Certificate = () => {
                     margin: 0 auto;
                     padding: 40px 20px;
                     line-height: 1.8;
+                }
+
+                .modelVideo {
+                    display: flex;
+                    gap: 20px;
+                    margin-top: 20px;
                 }
 
                 h1 {
