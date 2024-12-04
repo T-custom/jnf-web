@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from 'next/router';
 
-const ExamAbout = () => {
+const AllJapanAbout = () => {
   const router = useRouter();
 
   const handleNavigation = (path: string) => {
@@ -11,27 +11,25 @@ const ExamAbout = () => {
   return (
     <>
       <div className="container">
-        <div className="text-container">
-          <p className="title">JNFなわとび検定</p>
-          <p className="description">
-            JNFなわとび検定はなわとびの技によって40~1級、段以上を認定します。
-            認定方法は主にクラブや検定会、動画検定で認定し、合格した際は合格認定証を贈呈しています。
-            Instagram, YouTubeにて見本動画を掲載しているため是非ご覧ください。
-          </p>
-          <div className="view-more" onClick={() => handleNavigation('/certification')}>
-            <span>JNFなわとび検定について</span>
-            <button className="arrow-button" aria-label="JNFについてページへ移動">➔</button>
-          </div>
-        </div>
         <div className="image-container">
           <Image
-            src="/images/hyogo8.png"
-            alt="JNFなわとび検定"
+            src="/images/medal.jpg"
+            alt="JNF日本なわとび選手権大会"
             layout="responsive" // 修正: fill ではなく layout を使用
             width={810} // 画像の元の幅
             height={607} // 画像の元の高さ
             className="image"
           />
+        </div>
+        <div className="text-container">
+          <p className="title">JNF全日本なわとび選手権大会</p>
+          <p className="description">
+            全日本なわとび選手権大会（全国大会）を毎年開催しています。   
+            年齢別選手権や無差別選手権を通してそれぞれの磨いてきた技で競います。       </p>
+          <div className="view-more" onClick={() => handleNavigation('/certification')}>
+            <span>JNFなわとび検定について</span>
+            <button className="arrow-button" aria-label="JNFについてページへ移動">➔</button>
+          </div>
         </div>
       </div>
 
@@ -42,7 +40,7 @@ const ExamAbout = () => {
           align-items: center;
           justify-content: space-between;
           padding: 50px 20px;
-          background-color: #f5fffa;
+          background-color: #f9e4b7;
           color: #333333;
           text-align: left;
         }
@@ -116,7 +114,7 @@ const ExamAbout = () => {
 
         @media (max-width: 768px) {
           .container {
-            flex-direction: column-reverse; /* 縦並びに変更 */
+            flex-direction: column; /* 縦並びに変更 */
             align-items: center;
           }
 
@@ -129,4 +127,4 @@ const ExamAbout = () => {
   );
 };
 
-export default ExamAbout;
+export default AllJapanAbout;

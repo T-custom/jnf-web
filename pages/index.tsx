@@ -7,6 +7,7 @@ import Footer from '../src/components/Footer'
 import AboutJnf from '@/src/components/AboutJnf';
 // import SocialMediaEmbeds from '@/src/components/ClubSns';
 import ExamAbout from '@/src/components/ExamAbout';
+import AllJapanAbout from '@/src/components/AllJapanInfo';
 
 const HomePage = () => {
     return (
@@ -17,6 +18,7 @@ const HomePage = () => {
             <AboutJnf />
             <ExamAbout />
             {/* <SocialMediaEmbeds /> */}
+            <AllJapanAbout />
             <Footer />
         </div>
     );
