@@ -5,7 +5,7 @@ import SliderHome from '../src/components/SliderHome'
 import Topick from '../src/components/Topick'
 import Footer from '../src/components/Footer'
 import AboutJnf from '@/src/components/AboutJnf';
-import SocialMediaEmbeds from '@/src/components/ClubSns';
+// import SocialMediaEmbeds from '@/src/components/ClubSns';
 import ExamAbout from '@/src/components/ExamAbout';
 
 const HomePage = () => {
@@ -16,7 +16,7 @@ const HomePage = () => {
             <Topick />
             <AboutJnf />
             <ExamAbout />
-            <SocialMediaEmbeds />
+            {/* <SocialMediaEmbeds /> */}
             <Footer />
         </div>
     );

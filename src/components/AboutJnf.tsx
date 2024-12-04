@@ -62,7 +62,7 @@ const AboutJnf: React.FC = () => {
                 align-items: center;
                 gap: 20px;
                 margin-top: 20px;
-                margin-right: 200px;
+                margin-right: 100px;
                 cursor: pointer;
                 text-decoration: none;
                 color: #000;

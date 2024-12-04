@@ -1,35 +1,40 @@
 import React from 'react';
-import { useEffect } from 'react';
 import Header from '../src/components/Header';
 import Footer from '../src/components/Footer';
 
 const InstagramEmbed = ({ permalink }: { permalink: string }) => {
-    useEffect(() => {
-      if (typeof window !== 'undefined') {
-        const script = document.createElement('script');
-        script.src = 'https://www.instagram.com/embed.js';
-        script.async = true;
-        document.body.appendChild(script);
-      }
-    }, []);
+    const postId = permalink.split('/p/')[1]?.split('/')[0];
+  
+    if (!postId) {
+      return <div>Invalid Instagram URL</div>;
+    }
   
     return (
-      <blockquote
-        className="instagram-media"
-        data-instgrm-permalink={permalink}
-        data-instgrm-version="14"
+      <div
         style={{
-          background: '#FFF',
-          border: '0',
-          borderRadius: '3px',
-          boxShadow: '0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15)',
-          margin: '1px',
-          maxWidth: '270px',
-          minWidth: '163px',
-          padding: '0',
+          position: 'relative',
           width: '100%',
+          maxWidth: '400px', // デスクトップでの最大幅
+          aspectRatio: '4 / 5', // アスペクト比を指定
+          margin: '0 auto',
+          overflow: 'hidden',
         }}
-      ></blockquote>
+      >
+        <iframe
+          src={`https://www.instagram.com/p/${postId}/embed`}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            border: 'none',
+          }}
+          allowTransparency={true}
+          scrolling="no"
+          frameBorder="0"
+        ></iframe>
+      </div>
     );
 };
 
@@ -95,7 +100,7 @@ const Certificate = () => {
                     </p>
                 </section>
 
-                40級〜1級までの全ての技は、Instagramで見本動画を掲載しています。
+                <p>40級〜1級までの全ての技は、Instagramで見本動画を掲載しています。</p>
                 <section className='modelVideo'>
                         <InstagramEmbed permalink="https://www.instagram.com/p/B_wwIeAH4R1/" />
                         <InstagramEmbed permalink="https://www.instagram.com/p/CASKvthn-8O/" />
@@ -145,6 +150,7 @@ const Certificate = () => {
                     display: flex;
                     gap: 20px;
                     margin-top: 20px;
+                    flex-wrap: wrap; 
                 }
 
                 h1 {
@@ -196,6 +202,19 @@ const Certificate = () => {
 
                 table td {
                     background-color: #f9f9f9;
+                }
+
+                @media (max-width: 768px) {
+                    .modelVideo {
+                    flex-direction: column; /* スマホでは縦並びにする */
+                    gap: 15px;
+                    }
+                
+                    iframe {
+                    width: 100%;
+                    max-width: 300px; /* スマホでの最大幅 */
+                    height: auto; /* 高さを自動調整 */
+                    }
                 }
             `}</style>
         </>
