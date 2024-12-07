@@ -123,6 +123,12 @@ const ExamAbout = () => {
           .text-container {
             text-align: center; /* 中央揃えに変更 */
           }
+
+          .view-more {
+            justify-content: center; /* 中央揃え */
+            align-items: center; /* 中央揃え */
+            margin: 0 auto;
+          }
         }
       `}</style>
     </>

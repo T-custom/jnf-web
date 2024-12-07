@@ -51,8 +51,8 @@ const Header = () => {
             <nav className={`menu-container ${isMenuOpen ? 'open' : ''}`}>
                 <ul className="menu">
                     {MENU_ITEMS.map(({ href, label }) => (
-                        <li key={label} className="menu-item">
-                            <button onClick={() => handleNavigation(href)} className="menu-button">
+                        <li key={label} onClick={() => handleNavigation(href)} className="menu-item">
+                            <button className="menu-button">
                                 {label}
                             </button>
                         </li>
@@ -236,7 +236,7 @@ const SNS_LINKS = [
 // メニューアイテムデータ
 const MENU_ITEMS = [
     { href: '/about', label: 'JNF日本なわとび競技連盟とは' },
-    { href: '/member', label: 'JNF会員' },
+    { href: '/member', label: 'JNF会員について' },
     { href: '/certification', label: 'JNFなわとび検定' },
     { href: '/exam', label: '検定会・検定方法' },
     { href: '/judge', label: '審判資格' },

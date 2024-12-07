@@ -121,6 +121,12 @@ const AllJapanAbout = () => {
           .text-container {
             text-align: center; /* 中央揃えに変更 */
           }
+
+          .view-more {
+              justify-content: center; /* 中央揃え */
+              align-items: center; /* 中央揃え */
+              margin: 20px auto;
+          }
         }
       `}</style>
     </>

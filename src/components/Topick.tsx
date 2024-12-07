@@ -179,6 +179,14 @@ const Topick = () => {
                     background-color: white;
                     color: skyblue;
                 }
+
+                @media (max-width: 768px) {
+                    .view-more {
+                        justify-content: center; /* 中央揃え */
+                        align-items: center; /* 中央揃え */
+                        margin: 20px auto;
+                    }
+                }   
             `}</style>
         </section>
     );
